@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<script src="utils.js" charset="utf-8" defer></script>
+<script src="studentManagement.js" charset="utf-8" defer></script>
+</head>
+<body>
+	<div align="right">
+		<a href="Logout">Logout</a>
+	</div>
+	<h1>Bentornato!</h1>
+	<p>Felice di rivederti <span id="id_username"></span></p>
+	
+	
+	<table id="id_listcontainer">
+					<thead>
+						<tr>
+							<th>Nome del corso</th>
+						</tr>
+					</thead>
+					<tbody id="id_listcontainerbody">
+					</tbody>
+				</table>
+				
+	<table id="id_appellicontainer">
+					<thead>
+						<tr>
+							<th>Data</th>
+						</tr>
+					</thead>
+					<tbody id="id_appellicontainerbody">
+					</tbody>
+				</table>
+				
+	<div id="id_alert" class="alertmessage"></div>	
+	<div id="id_esitocontainer"></div>
+	<form id="id_refuseform" action="#">
+			<input type="hidden" name="appelloid">
+			<input type="button" type="button" name="Rifiuta" value="Rifiuta">
+	</form>
+</body>
+</html>

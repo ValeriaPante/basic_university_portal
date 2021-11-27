@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/mystyle.css"/>
+<script src="utils.js" charset="utf-8" defer></script>
+<script src="teacherManagement.js" charset="utf-8" defer></script>
+<script src="sort.js" charset="utf-8" defer></script>
+</head>
+<body>
+	<div align="right">
+		<a href="Logout">Logout</a>
+	</div>
+	<h1>Bentornato!</h1>
+	<p>Felice di rivederti <span id="id_username"></span></p>
+	
+	
+	<table id="id_listcontainer">
+					<thead>
+						<tr>
+							<th>Nome del corso</th>
+						</tr>
+					</thead>
+					<tbody id="id_listcontainerbody">
+					</tbody>
+				</table>
+				
+	<table id="id_appellicontainer">
+					<thead>
+						<tr>
+							<th>Data</th>
+						</tr>
+					</thead>
+					<tbody id="id_appellicontainerbody">
+					</tbody>
+				</table>
+				
+	<div id="id_alert" class="alertmessage"></div>	
+				
+	<table id="id_iscritticontainer">
+					<thead>
+						<tr>
+							<th class="sortable">Matricola</th>
+							<th class="sortable">Nome</th>
+							<th class="sortable">Cognome</th>
+							<th class="sortable">Email</th>
+							<th class="sortable">Corso di Laurea</th>
+							<th class="sortable">Voto</th>
+							<th class="sortable">Stato</th>
+						</tr>
+					</thead>
+					<tbody id="id_iscritticontainerbody">
+					</tbody>
+				</table>
+				
+	<form id="id_pubblicaform" action="#">
+			<input type="hidden" name="appelloid">
+			<input type="button" type="button" name="Pubblica" value="Pubblica">
+	</form>
+	<button id="verbalizza">Verbalizza</button>
+				
+	<div id="id_studdata"></div>
+	<form id="id_formgrade" action="#">
+			<b>Voto: </b><input type="text" name="grade" required>
+			<input type="hidden" name="appelloid">
+			<input type="hidden" name="studid">
+			<input type="button" value="Modifica">
+		</form>
+	
+	<div id="id_verbalecontainer">
+	
+	</div>		
+	
+	<table id="id_iscrittiverbale">
+						<thead>
+							<tr>
+								<th>Matricola</th>
+								<th>Nome</th>
+								<th>Cognome</th>
+								<th>Email</th>
+								<th>Corso di Laurea</th>
+								<th>Voto</th>
+							</tr>
+						</thead>
+						<tbody id="id_iscrittiverbalebody">
+						</tbody>
+					</table>			
+</body>
+</html>
