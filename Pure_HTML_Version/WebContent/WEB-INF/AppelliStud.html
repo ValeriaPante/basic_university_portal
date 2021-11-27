@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<body>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+	
+	<div th:if="${appelli.size() == 0}">
+		Non ci sono appelli a cui sei iscritto .
+	</div>
+	
+	<div th:if="${appelli.size() != 0}">
+		<p>Questi sono gli appelli del corso scelto a cui sei iscritto. Clicca sulla data dell'appello per vedere il tuo esito.</p>
+
+		<table class="border">
+			<thead>
+				<tr>
+					<th>Data</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="a : ${appelli}">
+					<td><a th:text="${a.date}" th:href="@{/GetInfo(appelloid=${a.id})}"></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

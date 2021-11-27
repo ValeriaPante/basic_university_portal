@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Modifica voto</title>
+</head>
+<body>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+		
+	<div>
+		<b>Matricola: </b><span th:text="${iscritto.matricola}"></span><br>
+		<b>Nome: </b><span th:text="${iscritto.name}"></span><br>
+		<b>Cognome: </b><span th:text="${iscritto.surname}"></span><br>
+		<b>Email: </b><span th:text="${iscritto.email}"></span><br>
+		<b>Corso di Laurea: </b><span th:text="${iscritto.cdl}"></span><br>
+		
+		<form action="Modifica" method="POST">
+			<b>Voto: </b><input type="text" name="grade" th:value="${iscritto.grade}" required>
+			<input type="hidden" name="appelloid" th:value="${appelloId}">
+			<input type="hidden" name="studid" th:value="${iscritto.id}">
+			<input type="submit" value="Modifica">
+			<p th:text=" ${errorMsg}"></p>
+		</form>
+
+	</div>
+</body>
+</html>

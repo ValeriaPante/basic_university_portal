@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+<title>Verbale</title>
+</head>
+<body>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+	
+	<div>
+		<b>Data creazione: </b><span th:text="${verbale.date}"></span><br>
+		<b>Ora creazione: </b><span th:text="${verbale.time}"></span><br>
+		<b>Nome del corso: </b><span th:text="${verbale.courseName}"></span><br>
+		<b>Docente del corso: </b><span th:text="${verbale.teacherName}"></span> <span th:text="${verbale.teacherSurname}"></span><br>
+		<b>Data appello: </b><span th:text="${verbale.appelloDate}"></span><br><br>
+	</div>
+	
+	<div th:if="${verbale.getStudents()}">
+		<table>
+			<thead>
+				<tr>
+					<th>Matricola</th>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Email</th>
+					<th>Corso di Laurea</th>
+					<th>Voto</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="i : ${verbale.getStudents()}">
+					<td th:text="${i.matricola}"></td>
+					<td th:text="${i.name}"></td>
+					<td th:text="${i.surname}"></td>
+					<td th:text="${i.email}"></td>
+					<td th:text="${i.cdl}"></td>
+					<td th:text="${i.grade}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	
+</body>
+</html>

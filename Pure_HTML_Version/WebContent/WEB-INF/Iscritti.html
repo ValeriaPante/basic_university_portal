@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+<head>
+<meta charset="ISO-8859-1">
+<title>Iscritti</title>
+</head>
+<body>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+	
+	<div th:if="${iscritti.size() == 0}">
+		Non ci sono iscritti per questo appello.
+	</div>
+	
+	<div th:if="${iscritti.size() != 0}">
+		<p>Questi sono gli iscritti all'appello</p>
+
+		<table class="border">
+			<thead>
+				<tr>
+					<th><a th:href="@{/GetIscritti(appelloid=${appelloId}, o= (${order}== 0 ? 1 : 0))}"><button>Matricola</button></a></th>
+					<th><a th:href="@{/GetIscritti(appelloid=${appelloId}, o= (${order}== 2 ? 3 : 2))}"><button>Nome</button></a></th>
+					<th><a th:href="@{/GetIscritti(appelloid=${appelloId}, o= (${order}== 4 ? 5 : 4))}"><button>Cognome</button></a></th>
+					<th><a th:href="@{/GetIscritti(appelloid=${appelloId}, o= (${order}== 6 ? 7 : 6))}"><button>Email</button></a></th>
+					<th><a th:href="@{/GetIscritti(appelloid=${appelloId}, o= (${order}== 8 ? 9 : 8))}"><button>Corso di Laurea</button></a></th>
+					<th><a th:href="@{/GetIscritti(appelloid=${appelloId}, o= (${order}== 10 ? 11 : 10))}"><button>Voto</button></a></th>
+					<th><a th:href="@{/GetIscritti(appelloid=${appelloId}, o= (${order}== 12 ? 13 : 12))}"><button>Stato</button></a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="i : ${iscritti}">
+					<td th:text="${i.matricola}"></td>
+					<td th:text="${i.name}"></td>
+					<td th:text="${i.surname}"></td>
+					<td th:text="${i.email}"></td>
+					<td th:text="${i.cdl}"></td>
+					<td th:text="${i.state.getValue()} == 0 ? 'ND':${i.grade}"></td>
+					<td th:text="${i.state}"></td>
+					<td th:if="${i.state.getValue() == 0 || i.state.getValue() == 1}"><a th:href="@{/Modifica(appelloid=${appelloId},studId=${i.id})}"><button>Modifica</button></a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<form action="Pubblica" method="POST">
+				<input type="hidden" name="appelloid" th:value="${appelloId}">
+				<input type="hidden" name="o" th:value="${order}">
+				<input type="submit" value="Pubblica">
+		</form>
+		
+		<a th:href="@{/GetVerbale(appelloid=${appelloId})}"><button>Verbalizza</button></a>	
+		
+	</div>
+	
+	
+	
+</body>
+</html>

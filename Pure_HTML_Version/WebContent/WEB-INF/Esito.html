@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Esito</title>
+</head>
+<body>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+		
+	<div th:if="${esito.state.getValue() == 0 || esito.state.getValue() == 1}">
+		<h1>Voto non ancora definito</h1>
+	</div>
+	
+	<div th:if="${esito.state.getValue()} == 3">
+		<h1>Il voto è stato rifiutato</h1>
+	</div>
+		
+	<div th:if="${esito.state.getValue() != 0 && esito.state.getValue() != 1}">
+		<b>Matricola: </b><span th:text="${esito.matricola}"></span><br>
+		<b>Nome: </b><span th:text="${esito.name}"></span><br>
+		<b>Cognome: </b><span th:text="${esito.surname}"></span><br>
+		<b>Email: </b><span th:text="${esito.email}"></span><br>
+		<b>Corso di Laurea: </b><span th:text="${esito.cdl}"></span><br>
+		<b>Nome del corso: </b><span th:text="${esito.courseName}"></span><br>
+		<b>Docente del corso: </b><span th:text="${esito.teacherName}"></span> <span th:text="${esito.teacherSurname}"></span><br>
+		<b>Data appello: </b><span th:text="${esito.date}"></span><br>
+		<b>Voto: </b><span th:text="${esito.grade}"></span><br>
+		
+		<form th:if="${rifiutabile}" action="Rifiuta" method="POST">
+			<input type="hidden" name="appelloid" th:value="${appelloid}">
+			<input type="submit" value="Rifiuta">
+		</form>
+
+	</div>
+</body>
+</html>

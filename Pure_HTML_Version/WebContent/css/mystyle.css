@@ -1,0 +1,15 @@
+
+.border {
+	border: 1px solid #003049;
+}
+
+.line {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 5 px;
+  color: #003049;
+}

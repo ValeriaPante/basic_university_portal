@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<body>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+	
+	<h1 th:text="${'Bentornato '+ session.user.name + ' ' + session.user.surname + ', ecco i tuoi corsi.'}"></h1>
+	
+	<div th:if="${courses.size() == 0}">
+		Non ci corsi a te associati.
+	</div>
+	
+	<div th:if="${courses.size() != 0}">
+
+		<table class="border">
+			<thead>
+				<tr>
+					<th>Nome del corso</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="c : ${courses}">
+					<td th:text="${c.name}"></td>
+					<td><a th:href="@{/GetAppelli(courseid=${c.id})}">Vedi appelli</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
